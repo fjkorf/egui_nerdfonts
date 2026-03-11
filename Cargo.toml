@@ -10,8 +10,7 @@ keywords = ["egui", "nerdfonts", "icons", "symbols", "font"]
 categories = ["gui"]
 
 [dependencies]
-egui = "0.33.3"
-
+egui = { version = "0.33.3", default-features = false }
 [dev-dependencies]
 eframe = "0.33.3"
 
