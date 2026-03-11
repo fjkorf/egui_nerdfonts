@@ -2,7 +2,7 @@ fn main() {
     eframe::run_native(
         "egui_nerdfonts demo",
         eframe::NativeOptions::default(),
-        Box::new(|cc| Box::new(Demo::new(cc))),
+        Box::new(|cc| Ok(Box::new(Demo::new(cc)))),
     )
     .unwrap();
 }
@@ -22,7 +22,10 @@ impl Demo {
 }
 
 impl eframe::App for Demo {
-    fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
+    fn ui(&mut self, ui: &mut egui::Ui, _frame: &mut eframe::Frame) {
+        let ctx = ui.ctx();
+
+        #[allow(deprecated)]
         egui::CentralPanel::default().show(ctx, |ui| {
             egui::Frame::canvas(ui.style()).show(ui, |ui| {
                 ui.label(
